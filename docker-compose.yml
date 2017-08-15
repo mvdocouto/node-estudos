@@ -12,6 +12,7 @@ services:
     entrypoint: /usr/src/app/entrypoint
   mysql:
     image: mysql/mysql-server
+    container_name: mysql-container
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_ROOT_HOST=%
