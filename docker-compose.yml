@@ -1,9 +1,19 @@
 version: '2'
 services:
   node:
-    image: node:6
+    image: node:alpine
     container_name: node-container
     ports:
-     - "8000:8000"
+     - "3000:3000"
     volumes:
-     - ./:usr/src/app
+      - ./:/usr/src/app
+    working_dir:
+      "/usr/src/app"
+    entrypoint: /usr/src/app/entrypoint
+  mysql:
+    image: mysql/mysql-server
+    enviroment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_HOST=%
+    volumes:
+    - ./db.sql:/docker-entrypoint-initdb.d/db.sql
