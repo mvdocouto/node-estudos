@@ -1,6 +1,5 @@
 create database if not exists db;
 use db;
-drop table if exists noticias
 create table noticias(
 	id integer auto_increment primary key,
 	titulo varchar(255),

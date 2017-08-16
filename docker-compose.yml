@@ -9,6 +9,8 @@ services:
       - ./:/usr/src/app
     working_dir:
       "/usr/src/app"
+    links:
+      - mysql
     entrypoint: /usr/src/app/entrypoint
   mysql:
     image: mysql/mysql-server

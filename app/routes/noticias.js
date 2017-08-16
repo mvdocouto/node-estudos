@@ -1,21 +1,15 @@
+var dbConnection = require('../../config/dbConnection');
+
 module.exports = function(app){
 
+	connection = dbConnection();
+
 	app.get('/noticias', function(req, res){
-
-		var mysql = require('mysql');
-
-		var connection = mysql.createConnection({
-			host:'mysql-container',
-			user: 'root',
-			password: '',
-			database: 'db'
-		});
-
 		connection.query("select * from noticias", function(error, result){
-			res.send(result);
+			console.log(result);
+			// res.send(result);
+			res.render('noticias/noticias', {noticias: result});
 		});
-
-		res.render('noticias/noticias');
 	});
 };
 
