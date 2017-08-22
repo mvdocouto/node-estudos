@@ -6,6 +6,10 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 // Carregando todas as rotas automaticamente
-consign().include('app/routes').into(app);
+consign()
+	.include('app/routes')
+	.then('dbConnection')
+	.into(app);
+
 
 module.exports = app
